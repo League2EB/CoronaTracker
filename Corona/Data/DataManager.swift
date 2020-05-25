@@ -64,53 +64,134 @@ public class DataManager {
 
 extension DataManager {
 	public func download(completion: @escaping (Bool) -> Void) {
+		let dispatchGroup = DispatchGroup()
+		var result: (jhu: [Region]?, bing: [Region]?, rki: [Region]?, austria: [Region]?) = (nil, nil, nil, nil)
+
+		/// Main data is from JHU
+		dispatchGroup.enter()
 		JHUWebDataService.shared.fetchReports { regions, _ in
 			guard let regions = regions else {
+				dispatchGroup.leave()
 				completion(false)
 				return
 			}
 
-			/// Don't download the time serieses if they are not old enough.
-			/// Currently, they are updated from the data source every 24 hours.
-//			if self.world.timeSeries?.lastUpdate?.ageDays ?? 0 < 2 {
-//				self.update(regions: regions, timeSeriesRegions: self.regions(of: .province), completion: completion)
-//				return
-//			}
-
 			JHURepoDataService.shared.fetchTimeSerieses { timeSeriesRegions, _ in
-				self.update(regions: regions, timeSeriesRegions: timeSeriesRegions, completion: completion)
+				self.update(regions: regions, timeSeriesRegions: timeSeriesRegions)
+				result.jhu = regions
+				dispatchGroup.leave()
 			}
+		}
+
+		/// Add more data from Bing
+		dispatchGroup.enter()
+		BingDataService.shared.fetchReports { regions, _ in
+			guard let regions = regions else {
+				dispatchGroup.leave()
+				return
+			}
+
+			result.bing = regions
+			dispatchGroup.leave()
+		}
+
+		/// Add data for Germany
+		dispatchGroup.enter()
+		RKIDataService.shared.fetchReports { regions, _ in
+			guard let regions = regions else {
+				dispatchGroup.leave()
+				return
+			}
+
+			result.rki = regions
+			dispatchGroup.leave()
+		}
+
+		/// Add data from Austria
+		dispatchGroup.enter()
+		BMSGPKDataService.shared.fetchReports { regions, _ in
+			guard let regions = regions else {
+				dispatchGroup.leave()
+				return
+			}
+
+			result.austria = regions
+			dispatchGroup.leave()
+		}
+
+		dispatchGroup.notify(queue: .global(qos: .default)) {
+			if result.jhu == nil {
+				return
+			}
+
+			/// Data from Bing
+			if let regions = result.bing {
+				for region in regions where !region.subRegions.isEmpty {
+					if let regionCode = Locale.isoCode(from: region.name),
+						let existingRegion = self.world.find(subRegionCode: regionCode),
+						existingRegion.subRegions.count < region.subRegions.count / 2 {
+						existingRegion.subRegions = region.subRegions
+					}
+				}
+			}
+
+			/// Data for Germany comes from a different source, so don't accumulate data
+			if let subRegions = result.rki, let region = self.world.find(subRegionCode: "DE") {
+				region.subRegions = subRegions
+			}
+
+			/// Data for Austria comes from a different source, so don't accumulate data
+			if let austrianSubRegions = result.austria, let region = self.world.find(subRegionCode: "AT") {
+				region.subRegions = austrianSubRegions
+			}
+
+			try? Disk.save(self.world, to: .caches, as: Self.dataFileName)
+
+			completion(true)
 		}
 	}
 
-	private func update(regions: [Region], timeSeriesRegions: [Region]?, completion: @escaping (Bool) -> Void) {
+	private func update(regions: [Region], timeSeriesRegions: [Region]?) {
 		timeSeriesRegions?.forEach { timeSeriesRegion in
 			regions.first { $0 == timeSeriesRegion }?.timeSeries = timeSeriesRegion.timeSeries
 		}
 
 		/// Countries
 		var countries = [Region]()
-		countries.append(contentsOf: regions.filter({ !$0.isProvince }))
-		let provinceRegions = regions.filter({ $0.isProvince })
-		Dictionary(grouping: provinceRegions, by: { $0.parentName }).values.forEach { value in
-			if let countryRegion = Region.join(subRegions: value) {
-				countries.append(countryRegion)
+		var newCountries = [Region]()
+		countries += regions.filter { !$0.isProvince }
+		let provinceRegions = regions.filter { $0.isProvince }
+		Dictionary(grouping: provinceRegions, by: { $0.parentName }).values.forEach { subRegions in
+			/// If there is already a region for this country, just add the sub regions
+			if let existingCountry = countries.first(where: { $0.name == subRegions.first?.parentName }) {
+				existingCountry.add(subRegions: subRegions, addSubData: true)
+				return
+			}
+
+			/// Otherwise, create a new country region
+			if let newCountry = Region.join(subRegions: subRegions) {
+				countries.append(newCountry)
+				newCountries.append(newCountry)
 			}
 		}
 
-		/// Update US time series
-		if let timeSeriesRegion = timeSeriesRegions?.first(where: { $0.name == "US" }) {
-			countries.first { $0.name == "US" }?.timeSeries = timeSeriesRegion.timeSeries
+		/// Update the time series for the newly created countries
+		newCountries.forEach { country in
+			if let region = timeSeriesRegions?.first(where: { $0 == country }) {
+				country.timeSeries = region.timeSeries
+			}
 		}
 
 		/// World
 		let worldRegion = Region.world
 		worldRegion.subRegions = countries
+		worldRegion.updateFromSubRegions()
 
 		self.world = worldRegion
 
-		try? Disk.save(self.world, to: .caches, as: Self.dataFileName)
-
-		completion(true)
+		let sortedCountries: [Region] = countries.lazy.sorted().reversed()
+		for index in sortedCountries.indices {
+			sortedCountries[index].order = index
+		}
 	}
 }

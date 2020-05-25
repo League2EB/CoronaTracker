@@ -88,6 +88,12 @@
 		11DCD56D243F8EEC006CE8ED /* AppToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DCD56C243F8EEC006CE8ED /* AppToolbar.swift */; };
 		11DCD56F243FAEBB006CE8ED /* AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DCD56E243FAEBB006CE8ED /* AppMenu.swift */; };
 		11DE76882431339400381C0A /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DE76872431339400381C0A /* ChartView.swift */; };
+		11E9FE0A244DB2E200455088 /* BaseDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9FE08244DB2E100455088 /* BaseDataService.swift */; };
+		11E9FE0B244DB2E200455088 /* BaseDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9FE08244DB2E100455088 /* BaseDataService.swift */; };
+		11E9FE0C244DB2E200455088 /* RKIDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9FE09244DB2E100455088 /* RKIDataService.swift */; };
+		11E9FE0D244DB2E200455088 /* RKIDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9FE09244DB2E100455088 /* RKIDataService.swift */; };
+		11E9FE0F244DC24C00455088 /* BingDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9FE0E244DC05400455088 /* BingDataService.swift */; };
+		11E9FE10244DC24D00455088 /* BingDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9FE0E244DC05400455088 /* BingDataService.swift */; };
 		11EB2C9D2413F7E9001769B2 /* CurrentChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EB2C9C2413F7E9001769B2 /* CurrentChartView.swift */; };
 		11EB2C9F2413FFE1001769B2 /* HistoryChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EB2C9E2413FFE1001769B2 /* HistoryChartView.swift */; };
 		11EB2CA1241400EF001769B2 /* TopChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EB2CA0241400EF001769B2 /* TopChartView.swift */; };
@@ -96,6 +102,8 @@
 		344ED322241AC7AA004C4EA8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344ED321241AC7AA004C4EA8 /* NotificationCenter.framework */; };
 		344ED32C241AC7AA004C4EA8 /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 344ED31F241AC7AA004C4EA8 /* Widget.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		344ED333241ACCC9004C4EA8 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344ED324241AC7AA004C4EA8 /* TodayViewController.swift */; };
+		CDA24CD924559C9C00375D19 /* BMSGPKDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA24CD824559C9C00375D19 /* BMSGPKDataService.swift */; };
+		CDA24CDA24559E3E00375D19 /* BMSGPKDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA24CD824559C9C00375D19 /* BMSGPKDataService.swift */; };
 		CDA50DE0242C7D330055BE4A /* CSV in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 115186B3241FB00000EBC83E /* CSV */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CDA50DE2242C7D350055BE4A /* Disk in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 115186B0241FAFF300EBC83E /* Disk */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CDA50DE3242C7D3C0055BE4A /* CSV in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 115186B7241FB04200EBC83E /* CSV */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -148,6 +156,7 @@
 		1124F649242386A30002641D /* MenuSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSegue.swift; sourceTree = "<group>"; };
 		1124F64B24238C600002641D /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		112A0871244081AE00A59F1D /* ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
+		113660AA24697516008FE6B0 /* sq */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sq; path = sq.lproj/Localizable.strings; sourceTree = "<group>"; };
 		113AF0582437A4B2000732D0 /* ChartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartController.swift; sourceTree = "<group>"; };
 		113AF05E243B52B3000732D0 /* ShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareManager.swift; sourceTree = "<group>"; };
 		113AF060243CB1C1000732D0 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -213,6 +222,14 @@
 		11DE76852430AB9100381C0A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		11DE76862430AE6600381C0A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		11DE76872431339400381C0A /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		11E9FDFC244CDB1700455088 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		11E9FDFD244CDB8000455088 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
+		11E9FDFE244CDD2600455088 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		11E9FDFF244CE02600455088 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		11E9FE01244CE21900455088 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
+		11E9FE08244DB2E100455088 /* BaseDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDataService.swift; sourceTree = "<group>"; };
+		11E9FE09244DB2E100455088 /* RKIDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKIDataService.swift; sourceTree = "<group>"; };
+		11E9FE0E244DC05400455088 /* BingDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingDataService.swift; sourceTree = "<group>"; };
 		11EB2C9C2413F7E9001769B2 /* CurrentChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentChartView.swift; sourceTree = "<group>"; };
 		11EB2C9E2413FFE1001769B2 /* HistoryChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryChartView.swift; sourceTree = "<group>"; };
 		11EB2CA0241400EF001769B2 /* TopChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopChartView.swift; sourceTree = "<group>"; };
@@ -223,6 +240,11 @@
 		344ED324241AC7AA004C4EA8 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		344ED329241AC7AA004C4EA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34C02EBB2431246C00AE80FE /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		383DDBE624609B2B00148CC8 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		448DD86C2446A22E0010F32B /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E5960482471A0E400D7B8E2 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C31F26A5244C594300281F1F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CDA24CD824559C9C00375D19 /* BMSGPKDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMSGPKDataService.swift; sourceTree = "<group>"; };
 		FC5A29A624400862005C58BB /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -299,8 +321,12 @@
 			isa = PBXGroup;
 			children = (
 				11518696241FAECB00EBC83E /* DataService.swift */,
+				11E9FE08244DB2E100455088 /* BaseDataService.swift */,
 				11518697241FAECB00EBC83E /* JHUWebDataService.swift */,
 				11518698241FAECB00EBC83E /* JHURepoDataService.swift */,
+				11E9FE09244DB2E100455088 /* RKIDataService.swift */,
+				CDA24CD824559C9C00375D19 /* BMSGPKDataService.swift */,
+				11E9FE0E244DC05400455088 /* BingDataService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -600,6 +626,16 @@
 				nl,
 				ro,
 				ko,
+				id,
+				hu,
+				ar,
+				nb,
+				tr,
+				"zh-Hant-TW",
+				da,
+				uk,
+				sq,
+				el,
 			);
 			mainGroup = 1162D11F240D05F600647002;
 			packageReferences = (
@@ -677,9 +713,11 @@
 				11DCD56F243FAEBB006CE8ED /* AppMenu.swift in Sources */,
 				11C6D382243E460D003AC870 /* MenuItem.swift in Sources */,
 				11C6D390243E4882003AC870 /* UpdateTimeCell.swift in Sources */,
+				CDA24CD924559C9C00375D19 /* BMSGPKDataService.swift in Sources */,
 				115186A1241FAFCA00EBC83E /* Coordinate.swift in Sources */,
 				11C6D394243E48C3003AC870 /* AuthorInfoCell.swift in Sources */,
 				11672A1E2411494F000B2466 /* DayAxisValueFormatter.swift in Sources */,
+				11E9FE0F244DC24C00455088 /* BingDataService.swift in Sources */,
 				117C84E82428119600688459 /* Assets.swift in Sources */,
 				11C6D37E243E44D4003AC870 /* Charts+Extensions.swift in Sources */,
 				1186BC72242B64FE00097E9E /* RegionDataCell.swift in Sources */,
@@ -714,6 +752,7 @@
 				115186A2241FAFCA00EBC83E /* Statistic.swift in Sources */,
 				116EC0A82410DF48006E4559 /* RegionPanelController.swift in Sources */,
 				1124F64C24238C600002641D /* Menu.swift in Sources */,
+				11E9FE0C244DB2E200455088 /* RKIDataService.swift in Sources */,
 				115186AB241FAFCE00EBC83E /* JHURepoDataService.swift in Sources */,
 				1162D12C240D05F600647002 /* AppDelegate.swift in Sources */,
 				1186BC5D24291D4000097E9E /* DeltaChartView.swift in Sources */,
@@ -722,6 +761,7 @@
 				11DE76882431339400381C0A /* ChartView.swift in Sources */,
 				11C6D38B243E47BE003AC870 /* StatsCell.swift in Sources */,
 				11C6D38D243E47EF003AC870 /* ChartCell.swift in Sources */,
+				11E9FE0A244DB2E200455088 /* BaseDataService.swift in Sources */,
 				1162D156240F934100647002 /* BalloonMarker.swift in Sources */,
 				11EB2C9D2413F7E9001769B2 /* CurrentChartView.swift in Sources */,
 			);
@@ -731,16 +771,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11E9FE0D244DB2E200455088 /* RKIDataService.swift in Sources */,
 				115186AC241FAFCE00EBC83E /* DataService.swift in Sources */,
 				115186AE241FAFCE00EBC83E /* JHURepoDataService.swift in Sources */,
 				117C84EB2428119600688459 /* Strings.swift in Sources */,
 				344ED333241ACCC9004C4EA8 /* TodayViewController.swift in Sources */,
 				115186A5241FAFCA00EBC83E /* TimeSeries.swift in Sources */,
 				1151869E241FAFC500EBC83E /* DataManager.swift in Sources */,
+				11E9FE10244DC24D00455088 /* BingDataService.swift in Sources */,
 				115186A8241FAFCA00EBC83E /* Region.swift in Sources */,
 				1151868C241FAC5B00EBC83E /* UIExtensions.swift in Sources */,
+				CDA24CDA24559E3E00375D19 /* BMSGPKDataService.swift in Sources */,
 				115186B9241FB31B00EBC83E /* Extensions.swift in Sources */,
 				117C84E92428119600688459 /* Assets.swift in Sources */,
+				11E9FE0B244DB2E200455088 /* BaseDataService.swift in Sources */,
 				115186BA242005E900EBC83E /* SystemColor.swift in Sources */,
 				115186A4241FAFCA00EBC83E /* Report.swift in Sources */,
 				115186A6241FAFCA00EBC83E /* Coordinate.swift in Sources */,
@@ -771,6 +815,16 @@
 				113AF060243CB1C1000732D0 /* nl */,
 				113AF061243CB277000732D0 /* ro */,
 				FC5A29A624400862005C58BB /* ko */,
+				448DD86C2446A22E0010F32B /* id */,
+				C31F26A5244C594300281F1F /* hu */,
+				11E9FDFC244CDB1700455088 /* ar */,
+				11E9FDFD244CDB8000455088 /* nb */,
+				11E9FDFE244CDD2600455088 /* tr */,
+				11E9FDFF244CE02600455088 /* zh-Hant-TW */,
+				11E9FE01244CE21900455088 /* da */,
+				383DDBE624609B2B00148CC8 /* uk */,
+				113660AA24697516008FE6B0 /* sq */,
+				4E5960482471A0E400D7B8E2 /* el */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -812,6 +866,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -872,6 +927,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -899,7 +955,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Corona/App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.6;
+				CURRENT_PROJECT_VERSION = 1.7.1;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Corona/Info.plist;
@@ -907,7 +963,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.samabox.corona;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -923,7 +979,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Corona/App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.6;
+				CURRENT_PROJECT_VERSION = 1.7.1;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Corona/Info.plist;
@@ -931,7 +987,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.samabox.corona;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;

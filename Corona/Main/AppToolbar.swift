@@ -44,13 +44,13 @@ extension AppToolbar: NSToolbarDelegate {
 		switch itemIdentifier {
 		case .mode:
 			let item = NSToolbarItemGroup(itemIdentifier: itemIdentifier,
-										  titles: Statistic.Kind.all.map { $0.description },
+										  titles: Statistic.Kind.allCases.map { $0.description },
 										  selectionMode: .selectOne,
 										  labels: nil,
 										  target: self,
 										  action: #selector(toolbarGroupSelectionChanged(group:)))
 			item.controlRepresentation = .collapsed
-			item.selectedIndex = MapController.shared.mode.rawValue
+			item.selectedIndex = (MapController.shared?.mode ?? .confirmed).rawValue
 			return item
 
 		case .reload:
